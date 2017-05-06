@@ -1,0 +1,14 @@
+.spinnerActive {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: #b1dcfb;
+    opacity: 0.1;
+}
+
+.spinner {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+}

@@ -1,0 +1,36 @@
+<div class="row" style="padding-top: 30px">
+    <div class="col s12 m6 offset-m3">
+        <div class="card">
+            <form [formGroup]="loginForm">
+                <div class="card-content">
+                    <div class="card-title">
+                        <span>Login To Access The Application</span>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input #userNameInput id="userId" type="text" formControlName="un" placeholder="">
+                            <label class="active" for="userId">User ID</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" class="validate"
+                                   formControlName="pw" placeholder="">
+                            <label class="active" for="password">Password</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="col s12">
+                            <button (click)="doLogin()"
+                                    class="btn light-blue" style="width: 100%" [disabled]="!loginForm.valid">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
