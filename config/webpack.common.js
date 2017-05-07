@@ -68,10 +68,9 @@ module.exports = {
             jquery: 'jquery',
             'window.$': 'jquery',
             'window.jQuery': 'jquery',
-            accounting: 'accounting',
+            numeral: 'numeral',
             _: 'lodash',
-            moment: 'moment',
-            alertify: 'alertify.js'
+            moment: 'moment'
         })
     ]
 };
