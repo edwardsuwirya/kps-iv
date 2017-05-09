@@ -19,3 +19,4 @@ import 'lodash';
 import 'jquery/src/jquery.js';
 import 'moment/moment.js';
 import 'materialize-css/dist/js/materialize.js';
+import 'jwt-simple';

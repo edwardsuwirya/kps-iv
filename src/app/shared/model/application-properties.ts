@@ -5,10 +5,11 @@ import {InjectionToken} from "@angular/core";
 
 export let APP_CONFIG = new InjectionToken("app.config");
 
-let SERVICE_BASE_URL:string = process.env.API_URL;
+let SERVICE_BASE_URL: string = process.env.API_URL;
 
 export const appConfig = {
     'lsAuthKey': 'av',
+    'tokUserName': 'un',
     'generalErrorMessage': 'Something\'s not good happened, please contact IT',
     'mandatoryErrorMessage': 'Please fill all mandatory fields'
 }

@@ -70,7 +70,8 @@ module.exports = {
             'window.jQuery': 'jquery',
             numeral: 'numeral',
             _: 'lodash',
-            moment: 'moment'
+            moment: 'moment',
+            jwt: 'jwt-simple'
         })
     ]
 };

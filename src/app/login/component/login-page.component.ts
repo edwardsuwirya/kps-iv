@@ -5,6 +5,7 @@ import {Component, OnInit} from "@angular/core";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthorizationService} from "../service/authorization.service";
+import {SecKeyService} from "../../shared/service/seckey.service";
 
 @Component({
     selector: 'app-login-page',
@@ -12,9 +13,10 @@ import {AuthorizationService} from "../service/authorization.service";
     styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-    loginForm:FormGroup;
+    loginForm: FormGroup;
 
-    constructor(private router:Router, private formBuilder:FormBuilder, private authService:AuthorizationService) {
+    constructor(private router: Router, private formBuilder: FormBuilder,
+                private authService: AuthorizationService) {
 
     }
 
@@ -26,7 +28,7 @@ export class LoginPageComponent implements OnInit {
     }
 
     doLogin() {
-        let isAuth:boolean = this.authService.doAuth(this.loginForm.get('un').value, this.loginForm.get('pw').value);
+        let isAuth: boolean = this.authService.doAuth(this.loginForm.get('un').value, this.loginForm.get('pw').value);
         if (isAuth) {
             this.router.navigate(['home']);
         } else {
