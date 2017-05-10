@@ -1,5 +1,5 @@
 import {Injectable, Inject} from "@angular/core";
-import {CanActivate} from "@angular/router";
+import {CanActivate, Router} from "@angular/router";
 import {LocalStorageService} from "../shared/service/local-storage.service";
 import {APP_CONFIG} from "../shared/model/application-properties";
 import {SimpleTokenService} from "../shared/service/simple-token.service";
@@ -11,6 +11,7 @@ import {SecKeyService} from "../shared/service/seckey.service";
 @Injectable()
 export class CanActivateAuth implements CanActivate {
     constructor(@Inject(APP_CONFIG) private appConfig,
+                private router: Router,
                 private localStorageService: LocalStorageService,
                 private simpleTokenService: SimpleTokenService,
                 private secKeyService: SecKeyService) {
@@ -28,8 +29,12 @@ export class CanActivateAuth implements CanActivate {
                 isAllowed = false
             }
         } catch (err) {
+            console.log(err);
             isAllowed = false;
         } finally {
+            if (!isAllowed) {
+                this.router.navigate(['/login']);
+            }
             return isAllowed;
         }
     }

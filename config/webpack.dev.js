@@ -30,9 +30,9 @@ module.exports = webpackMerge(commonConfig, {
         compress: true,
         clientLogLevel: 'info',
         proxy: {
-            '/ajax': {
-                target: 'http://192.168.5.20:8080/',
-                pathRewrite: {'^/ajax': ''},
+            '/mock': {
+                target: 'http://localhost:9988/',
+                pathRewrite: {'^/mock': ''},
                 secure: false
             }
         },

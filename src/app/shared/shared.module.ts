@@ -5,6 +5,9 @@ import {LocalStorageService} from "./service/local-storage.service";
 import {ModalComponent} from "./component/modal/modal.component";
 import {SimpleTokenService} from "./service/simple-token.service";
 import {SecKeyService} from "./service/seckey.service";
+import {ReportViewerService} from "./service/report-viewer.service";
+import {HttpModule} from "@angular/http";
+import {HttpUtilService} from "./service/http-util.service";
 /**
  * Created by edo on 06/05/2017.
  */
@@ -14,7 +17,8 @@ import {SecKeyService} from "./service/seckey.service";
         ModalComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        HttpModule
     ],
     exports: [
         CommonModule,
@@ -24,7 +28,9 @@ import {SecKeyService} from "./service/seckey.service";
     providers: [
         LocalStorageService,
         SimpleTokenService,
-        SecKeyService
+        SecKeyService,
+        ReportViewerService,
+        HttpUtilService
     ]
 })
 export class SharedModule {
