@@ -8,6 +8,7 @@ import {APP_CONFIG, appConfig} from "./shared/model/application-properties";
 import {SharedModule} from "./shared/shared.module";
 import {LoginModule} from "./login/login.module";
 import {HomeModule} from "./home/home.module";
+import {TransferInOutModule} from "./transfer-in-out/transfer-in-out.module";
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import {HomeModule} from "./home/home.module";
         AppRouteModule,
         SharedModule,
         LoginModule,
-        HomeModule
+        HomeModule,
+        TransferInOutModule
     ],
     providers: [
         {provide: APP_CONFIG, useValue: appConfig},

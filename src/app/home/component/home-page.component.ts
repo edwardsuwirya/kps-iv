@@ -15,15 +15,19 @@ import {HttpUtilService} from "../../shared/service/http-util.service";
 })
 export class HomePageComponent implements OnInit {
     @ViewChild('modal1')
-    modal1: ModalComponent;
+    modal1:ModalComponent;
 
-    constructor(private router: Router,
-                private localStorageService: LocalStorageService,
-                private reportViewerService: ReportViewerService,
-                private  httpUtilService: HttpUtilService) {
+    constructor(private router:Router,
+                private localStorageService:LocalStorageService,
+                private reportViewerService:ReportViewerService,
+                private  httpUtilService:HttpUtilService) {
     }
 
-    ngOnInit(): void {
+    ngOnInit():void {
+    }
+
+    doTransferInOut() {
+        this.router.navigateByUrl('/transferinout');
     }
 
     doPurchaseRequest() {

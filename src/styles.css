@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-html,body {
+html, body {
     height: 100%;
     width: 100%;
 }
@@ -51,4 +51,26 @@ table.sortable thead {
     color: #666666;
     font-weight: bold;
     cursor: default;
+}
+
+/*Materialize-CSS Overriding*/
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+    margin: 0 0 3px 0 !important;
+    height: 2rem !important;
+}
+
+td {
+    padding: 0px 0px !important;
+}
+
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 95% !important;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .container {
+        width: 95% !important;
+    }
 }

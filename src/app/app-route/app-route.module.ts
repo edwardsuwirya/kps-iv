@@ -7,12 +7,14 @@ import {LoginPageComponent} from "../login/component/login-page.component";
 import {HomePageComponent} from "../home/component/home-page.component";
 import {CanActivateAuth} from "./can-activate-auth.service";
 import {SharedModule} from "../shared/shared.module";
+import {TransferInOutPageComponent} from "../transfer-in-out/component/transfer-in-out-page.component";
 
 
 export const routes:Routes = [
     {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: 'login', component: LoginPageComponent},
     {path: 'home', component: HomePageComponent, canActivate: [CanActivateAuth]},
+    {path: 'transferinout', component: TransferInOutPageComponent},
     {path: '**', component: LoginPageComponent}
 ];
 

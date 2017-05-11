@@ -8,6 +8,7 @@ import {SecKeyService} from "./service/seckey.service";
 import {ReportViewerService} from "./service/report-viewer.service";
 import {HttpModule} from "@angular/http";
 import {HttpUtilService} from "./service/http-util.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 /**
  * Created by edo on 06/05/2017.
  */
@@ -23,7 +24,9 @@ import {HttpUtilService} from "./service/http-util.service";
     exports: [
         CommonModule,
         SpinnerComponent,
-        ModalComponent
+        ModalComponent,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [
         LocalStorageService,
