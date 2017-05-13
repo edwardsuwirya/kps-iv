@@ -42,66 +42,50 @@
             </div>
         </div>
         <div class="row">
-            <table class="bordered">
-                <thead>
-                <tr>
-                    <th class="align-center">No.</th>
-                    <th class="td-article">Article</th>
-                    <th>Serial No</th>
-                    <th class="align-right">Qty</th>
-                    <th class="align-center">UOM</th>
-                    <th class="td-description">Description</th>
-                    <th class="td-action"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let info of detailInfos;let idx = index;">
-                    <td class="align-center">{{idx+1}}</td>
-                    <td (click)="onFocusEditor('input0'+idx,'label0'+idx)">
-                        <input id="{{'input0'+idx}}" type="text"
-                               (keydown.tab)="onFocusEditor('input1'+idx,'label1'+idx)"
-                               [(ngModel)]="info.article"
-                               style="display: none"
-                               (blur)="onLostFocusEditor('input0'+idx,'label0'+idx)">
-                        <span id="{{'label0'+idx}}">{{info.article}}</span>
-                    </td>
-                    <td (click)="onFocusEditor('input1'+idx,'label1'+idx)">
-                        <input id="{{'input1'+idx}}" type="text"
-                               (keydown.tab)="onFocusEditor('input2'+idx,'label2'+idx)"
-                               [(ngModel)]="info.serialNo"
-                               style="display: none"
-                               (blur)="onLostFocusEditor('input1'+idx,'label1'+idx)">
-                        <span id="{{'label1'+idx}}">{{info.serialNo}}</span>
-                    </td>
-                    <td class="align-right" (click)="onFocusEditor('input2'+idx,'label2'+idx)">
-                        <input id="{{'input2'+idx}}" type="text" [(ngModel)]="info.qty"
-                               style="display: none; text-align: right"
-                               (blur)="onLostFocusEditor('input2'+idx,'label2'+idx)">
-                        <span id="{{'label2'+idx}}" class="align-right">{{info.qty}}</span>
-                    </td>
-                    <td class="align-center" (click)="onFocusEditor('input3'+idx,'label3'+idx)">
-                        <input list="uoms" id="{{'input3'+idx}}" type="text" [(ngModel)]="info.uom"
-                               style="display: none;"
-                               (blur)="onLostFocusEditor('input3'+idx,'label3'+idx)">
-                        <datalist id="uoms">
-                            <option value="KG">
-                            <option value="M">
-                            <option value="M2">
-                            <option value="Pcs">
-                            <option value="Unit">
-                        </datalist>
-                        <span id="{{'label3'+idx}}">{{info.uom}}</span>
-                    </td>
-                    <td></td>
-                    <td>
-                        <button class="btn btn-flat" (click)="onAddMoreDetail(idx)"><i
-                                class="fa fa-plus btn-action"></i></button>
-                        <button class="btn btn-flat" (click)="onRemoveDetail(idx)"><i
-                                class="fa fa-minus btn-action"></i></button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="col s12">
+                <div style="text-align: right">
+                    <button class="btn light-green" (click)="onAddMoreDetail()"><i
+                            class="fa fa-plus btn-action"></i> Add Item
+                    </button>
+                </div>
+                <table class="bordered">
+                    <thead>
+                    <tr>
+                        <th class="align-center">No.</th>
+                        <th class="td-article">Article</th>
+                        <th>Serial No</th>
+                        <th class="align-right">Qty</th>
+                        <th class="align-center">UOM</th>
+                        <th class="td-description">Description</th>
+                        <th class="td-action"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let info of detailInfos;let idx = index;">
+                        <td class="align-center">{{idx+1}}</td>
+                        <td>
+                            <span id="{{'label0'+idx}}">{{info.article}}</span>
+                        </td>
+                        <td>
+                            <span id="{{'label1'+idx}}">{{info.serialNo}}</span>
+                        </td>
+                        <td class="align-right">
+                            <span id="{{'label2'+idx}}" class="align-right">{{info.qty}}</span>
+                        </td>
+                        <td class="align-center">
+                            <span id="{{'label3'+idx}}">{{info.uom}}</span>
+                        </td>
+                        <td></td>
+                        <td>
+                            <button class="btn btn-flat" (click)="onUpdateDetail(info)"><i
+                                    class="fa fa-edit btn-action"></i></button>
+                            <button class="btn btn-flat" (click)="onRemoveDetail(info)"><i
+                                    class="fa fa-minus btn-action"></i></button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="row">
             <div class="col offset-s8 s4">
@@ -113,3 +97,17 @@
         </div>
     </div>
 </div>
+<app-modal #modal1 [modalId]="'modal1'" (clickEvent)="doSave($event)">
+    <div class="row">
+        <div class="col s6">
+            <div class="input-field">
+                <input placeholder="" id="article" type="text" class="validate" [(ngModel)]="detailInfo.article">
+                <label for="trfDate" class="active">Article</label>
+            </div>
+            <div class="input-field">
+                <input placeholder="" id="serialNo" type="text" class="validate" [(ngModel)]="detailInfo.serialNo">
+                <label for="trfType" class="active">Serial No</label>
+            </div>
+        </div>
+    </div>
+</app-modal>

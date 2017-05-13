@@ -1,19 +1,22 @@
 /**
  * Created by edo on 10/05/2017.
  */
-import {Component, OnInit, AfterViewInit} from "@angular/core";
-import {Observable} from "rxjs/Rx";
+import {Component, OnInit, AfterViewInit, ViewChild} from "@angular/core";
 import {TransferDetail} from "../model/transfer-detail";
+import {ModalComponent} from "../../shared/component/modal/modal.component";
 
 declare let $:any;
-
 @Component({
     selector: 'app-transferinout-page',
     templateUrl: './transfer-in-out-page.component.html',
     styleUrls: ['./transfer-in-out-page.component.css']
 })
 export class TransferInOutPageComponent implements OnInit,AfterViewInit {
-    detailInfos:TransferDetail[] = [new TransferDetail('', '', 0)];
+    @ViewChild('modal1')
+    modal1:ModalComponent;
+    detailInfo:TransferDetail = new TransferDetail();
+    detailInfos:TransferDetail[] = [];
+    updateStatus:number = 0;
 
     constructor() {
     }
@@ -25,29 +28,27 @@ export class TransferInOutPageComponent implements OnInit,AfterViewInit {
     ngAfterViewInit() {
     }
 
-    onAddMoreDetail(idx) {
-        this.detailInfos.splice(idx + 1, 0, new TransferDetail('', '', 0, ''));
-    }
-
-    onRemoveDetail(idx) {
-        if (this.detailInfos.length > 1) {
-            this.detailInfos.splice(idx, 1);
+    doSave(event) {
+        if (this.updateStatus === 0) {
+            this.detailInfos.push(this.detailInfo);
         }
+        this.detailInfo = new TransferDetail();
+        this.modal1.doClose();
     }
 
-    onFocusEditor(editorId:string, labelId:string) {
-        Observable.timer(100).do(()=> {
-            document.getElementById(editorId).style.display = 'block';
-            document.getElementById(labelId).style.display = 'none';
-            $('#' + editorId).focus();
-        }).subscribe();
-
+    onAddMoreDetail() {
+        this.updateStatus = 0;
+        this.modal1.doPopUp();
     }
 
-    onLostFocusEditor(editorId:string, labelId:string) {
-        Observable.timer(100).do(()=> {
-            document.getElementById(labelId).style.display = 'block';
-            document.getElementById(editorId).style.display = 'none';
-        }).subscribe();
+    onUpdateDetail(info:TransferDetail) {
+        this.updateStatus = 1;
+        this.detailInfo = info;
+        this.modal1.doPopUp();
+    }
+
+    onRemoveDetail(info:TransferDetail) {
+        let index = this.detailInfos.indexOf(info);
+        this.detailInfos.splice(index, 1);
     }
 }
