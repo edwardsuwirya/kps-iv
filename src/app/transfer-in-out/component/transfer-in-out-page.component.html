@@ -45,23 +45,23 @@
             <table class="bordered">
                 <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Article</th>
+                    <th class="align-center">No.</th>
+                    <th class="td-article">Article</th>
                     <th>Serial No</th>
-                    <th>Qty</th>
-                    <th>UOM</th>
-                    <th>Description</th>
-                    <th></th>
+                    <th class="align-right">Qty</th>
+                    <th class="align-center">UOM</th>
+                    <th class="td-description">Description</th>
+                    <th class="td-action"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let info of detailInfos;let idx = index;">
-                    <td>{{idx+1}}</td>
+                    <td class="align-center">{{idx+1}}</td>
                     <td (click)="onFocusEditor('input0'+idx,'label0'+idx)">
                         <input id="{{'input0'+idx}}" type="text"
                                (keydown.tab)="onFocusEditor('input1'+idx,'label1'+idx)"
                                [(ngModel)]="info.article"
-                               hidden="true"
+                               style="display: none"
                                (blur)="onLostFocusEditor('input0'+idx,'label0'+idx)">
                         <span id="{{'label0'+idx}}">{{info.article}}</span>
                     </td>
@@ -69,20 +69,35 @@
                         <input id="{{'input1'+idx}}" type="text"
                                (keydown.tab)="onFocusEditor('input2'+idx,'label2'+idx)"
                                [(ngModel)]="info.serialNo"
-                               hidden="true"
+                               style="display: none"
                                (blur)="onLostFocusEditor('input1'+idx,'label1'+idx)">
                         <span id="{{'label1'+idx}}">{{info.serialNo}}</span>
                     </td>
-                    <td (click)="onFocusEditor('input2'+idx,'label2'+idx)">
-                        <input id="{{'input2'+idx}}" type="text" [(ngModel)]="info.qty" hidden="true"
+                    <td class="align-right" (click)="onFocusEditor('input2'+idx,'label2'+idx)">
+                        <input id="{{'input2'+idx}}" type="text" [(ngModel)]="info.qty"
+                               style="display: none; text-align: right"
                                (blur)="onLostFocusEditor('input2'+idx,'label2'+idx)">
-                        <span id="{{'label2'+idx}}">{{info.qty}}</span>
+                        <span id="{{'label2'+idx}}" class="align-right">{{info.qty}}</span>
+                    </td>
+                    <td class="align-center" (click)="onFocusEditor('input3'+idx,'label3'+idx)">
+                        <input list="uoms" id="{{'input3'+idx}}" type="text" [(ngModel)]="info.uom"
+                               style="display: none;"
+                               (blur)="onLostFocusEditor('input3'+idx,'label3'+idx)">
+                        <datalist id="uoms">
+                            <option value="KG">
+                            <option value="M">
+                            <option value="M2">
+                            <option value="Pcs">
+                            <option value="Unit">
+                        </datalist>
+                        <span id="{{'label3'+idx}}">{{info.uom}}</span>
                     </td>
                     <td></td>
-                    <td></td>
                     <td>
-                        <button class="btn btn-flat" (click)="onAddMoreDetail()"><i class="fa fa-plus"></i></button>
-                        <button class="btn btn-flat" (click)="onRemoveDetail(info)"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-flat" (click)="onAddMoreDetail(idx)"><i
+                                class="fa fa-plus btn-action"></i></button>
+                        <button class="btn btn-flat" (click)="onRemoveDetail(idx)"><i
+                                class="fa fa-minus btn-action"></i></button>
                     </td>
                 </tr>
                 </tbody>

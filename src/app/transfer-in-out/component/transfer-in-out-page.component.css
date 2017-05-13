@@ -1,0 +1,24 @@
+.btn-action {
+    font-size: 12px;
+}
+
+.td-description {
+    width: 20%;
+}
+
+.td-action {
+    width: 15%;
+}
+.td-serial{
+    width: 25%;
+}
+.td-no {
+    width: 5%;
+}
+.td-qty{
+    width: 5%;
+}
+
+.td-article {
+    width: 30%;
+}
