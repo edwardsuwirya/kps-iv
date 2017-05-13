@@ -28,6 +28,12 @@ export class TransferInOutPageComponent implements OnInit,AfterViewInit {
     ngAfterViewInit() {
     }
 
+    doCancel(event) {
+        this.updateStatus = 0;
+        this.detailInfo = new TransferDetail();
+        this.modal1.doClose();
+    }
+
     doSave(event) {
         if (this.updateStatus === 0) {
             this.detailInfos.push(this.detailInfo);

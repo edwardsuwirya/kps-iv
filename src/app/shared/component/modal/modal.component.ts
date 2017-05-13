@@ -15,10 +15,16 @@ export class ModalComponent implements OnInit {
     modalId:string;
 
     @Input()
-    buttonText:string = 'OK';
+    button1Text:string = 'Cancel';
+
+    @Input()
+    button2Text:string = 'OK';
 
     @Output()
-    clickEvent:EventEmitter<boolean> = new EventEmitter();
+    click1Event:EventEmitter<boolean> = new EventEmitter();
+
+    @Output()
+    click2Event:EventEmitter<boolean> = new EventEmitter();
 
     constructor() {
     }
@@ -29,8 +35,12 @@ export class ModalComponent implements OnInit {
         });
     }
 
-    doClick() {
-        this.clickEvent.emit(true);
+    doClick1() {
+        this.click1Event.emit(true);
+    }
+
+    doClick2() {
+        this.click2Event.emit(true);
     }
 
     doPopUp() {
