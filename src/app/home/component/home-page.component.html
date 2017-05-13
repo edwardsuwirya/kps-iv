@@ -16,6 +16,6 @@
     </div>
 </div>
 
-<app-modal #modal1 [modalId]="'modal1'" (clickEvent)="doConfirmation($event)">
+<app-modal #modal1 [modalId]="'modal1'" (click1Event)="doCancel($event)" (click2Event)="doConfirmation($event)">
     <p>Sample</p>
 </app-modal>
